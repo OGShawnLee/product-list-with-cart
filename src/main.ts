@@ -1,6 +1,7 @@
 import App from './App.svelte'
+import "virtual:uno.css"
+import "@unocss/reset/tailwind.css"
 import { mount } from 'svelte'
-import './app.css'
 
 const app = mount(App, {
   target: document.getElementById('app')!,
