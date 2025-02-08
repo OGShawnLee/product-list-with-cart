@@ -26,6 +26,7 @@
     price: context.dessert.price,
     category: context.dessert.category,
     quantity: 1,
+    image: { thumbnail: context.dessert.image.thumbnail },
   });
 </script>
 

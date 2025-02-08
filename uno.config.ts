@@ -1,6 +1,9 @@
-import { defineConfig, presetWebFonts, presetUno } from "unocss";
+import { defineConfig, presetUno, presetWebFonts, transformerVariantGroup } from "unocss";
 
 export default defineConfig({
+  shortcuts: {
+    "button-red": "w-full h-12 bg-red rounded-full font-bold text-white",
+  },
   presets: [
     presetUno(),
     presetWebFonts({
@@ -23,5 +26,6 @@ export default defineConfig({
         900: "hsl(14, 65%, 9%)",
       }
     }
-  }
+  },
+  transformers: [transformerVariantGroup()],
 });

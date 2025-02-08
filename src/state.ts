@@ -5,6 +5,7 @@ export interface Item {
   category: string;
   price: number;
   quantity: number;
+  image: { thumbnail: string }
 }
 
 function createShoppingList() {
@@ -62,6 +63,9 @@ function createShoppingList() {
     },
     remove(name: string) {
       shoppingList.value = shoppingList.value.filter(i => i.name !== name)
+    },
+    reset() {
+      shoppingList.value = [];
     }
   }
 }

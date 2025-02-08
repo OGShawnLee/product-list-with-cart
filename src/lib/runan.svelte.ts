@@ -1,4 +1,8 @@
-export function ref<T>(initial: T) {
+export interface Ref<T> {
+  value: T;
+}
+
+export function ref<T>(initial: T): Ref<T> {
   let state = $state(initial);
   return {
     get value() {
