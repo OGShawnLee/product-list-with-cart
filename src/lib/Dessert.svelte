@@ -1,8 +1,9 @@
 <script lang="ts">
-    import CartLogo from "../assets/icon-add-to-cart.svg";
-    import DecrementIcon from "../assets/icon-decrement-quantity.svg";
-    import IncrementIcon from "../assets/icon-increment-quantity.svg";
-    import { shoppingList } from "../state";
+  import ButtonIcon from "./ButtonIcon.svelte";
+  import CartLogo from "../assets/icon-add-to-cart.svg";
+  import DecrementIcon from "../assets/icon-decrement-quantity.svg";
+  import IncrementIcon from "../assets/icon-increment-quantity.svg";
+  import { shoppingList } from "../state";
 
   interface Dessert {
     name: string;
@@ -44,39 +45,43 @@
         media="(min-width: 769px)"
       />
       <img
-        class="rounded-lg border-2 {item.included.value ? 'border-red' : 'border-transparent'}"
+        class="rounded-lg border-2 {item.included.value
+          ? 'border-red'
+          : 'border-transparent'}"
         src={context.dessert.image.tablet}
         alt={context.dessert.name}
       />
     </picture>
-    <div class="absolute right-1/2 bottom-0 transform translate-x-1/2 translate-y-1/2 min-w-max h-10 px-8">
+    <div
+      class="absolute right-1/2 bottom-0 transform translate-x-1/2 translate-y-1/2 min-w-max h-10 px-8"
+    >
       {#if item.included.value}
-      <div class="w-40 h-10 px-4 flex items-center justify-between bg-red rounded-full text-white">
-      <button
-            class="size-6 grid place-content-center border border-white rounded-full"
-            onclick={item.increment}
-            aria-label="increment-item-quantity"
-          >
-            <img class="size-3" src={IncrementIcon} alt="increment-item-quantity" />
-          </button>
+        <div
+          class="w-40 h-10 px-4 flex items-center justify-between bg-red rounded-full text-white"
+        >
+        <ButtonIcon 
+          class="border-white" 
+          icon={IncrementIcon}
+          alt="increment-item-quantity"
+          onclick={item.increment}
+        />
         {item.quantity.value}
-         <button
-            class="size-6 grid place-content-center border border-white rounded-full"
-            onclick={item.decrement}
-            aria-label="decrement-item-quantity"
-          >
-            <img class="size-3" src={DecrementIcon} alt="decrement-item-quantity" />
-          </button>
-      </div>
+        <ButtonIcon 
+          class="border-white" 
+          icon={DecrementIcon}
+          alt="decrement-item-quantity"
+          onclick={item.decrement}
+        />
+        </div>
       {:else}
-      <button
-      class="w-40 h-10 px-4 flex items-center justify-center bg-rose-50 gap-2 rounded-full border border-rose-900 font-semibold text-rose-900 no-wrap"
-      onclick={item.add}
-      >
-      <img src={CartLogo} alt="" />
-      Add to Cart
-    </button>
-    {/if}
+        <button
+          class="w-40 h-10 px-4 flex items-center justify-center bg-rose-50 gap-2 rounded-full border border-rose-900 font-semibold text-rose-900 no-wrap"
+          onclick={item.add}
+        >
+          <img src={CartLogo} alt="" />
+          Add to Cart
+        </button>
+      {/if}
     </div>
   </div>
   <div>

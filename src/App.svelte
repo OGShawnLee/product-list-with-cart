@@ -1,4 +1,5 @@
 <script lang="ts">
+  import ButtonIcon from "./lib/ButtonIcon.svelte";
   import Dessert from "./lib/Dessert.svelte";
   import EmptyIllustration from "./assets/illustration-empty-cart.svg";
   import IconRemove from "./assets/icon-remove-item.svg";
@@ -39,12 +40,12 @@
               </output>
             </div>
           </div>
-          <button
-            class="size-6 grid place-content-center border border-rose-400 rounded-full"
+          <ButtonIcon 
+            class="border-rose-400"
+            icon={IconRemove}
+            alt="remove-item"
             onclick={() => shoppingList.remove(item.name)}
-          >
-            <img class="size-3" src={IconRemove} alt="remove item" />
-          </button>
+          />
         </article>
       {:else}
         <div class="mb-4 grid gap-2 justify-items-center" transition:slide={{ duration: 300 }}>
